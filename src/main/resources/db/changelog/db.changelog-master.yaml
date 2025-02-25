@@ -1,0 +1,159 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: developer
+      changes:
+        - createTable:
+            tableName: address
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: building
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: street
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: region
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: longitude
+                  type: DOUBLE
+              - column:
+                  name: latitude
+                  type: DOUBLE
+
+  - changeSet:
+      id: 2
+      author: developer
+      changes:
+        - createTable:
+            tableName: attraction
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: attraction_type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_attraction_address
+                    references: address(id)
+
+  - changeSet:
+      id: 3
+      author: developer
+      changes:
+        - createTable:
+            tableName: service
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: service_type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 4
+      author: developer
+      changes:
+        - createTable:
+            tableName: ticket_info
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: price
+                  type: DECIMAL(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency
+                  type: VARCHAR(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: availability
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: attraction_id
+                  type: UUID
+                  constraints:
+                    unique: true
+                    foreignKeyName: fk_ticket_info_attraction
+                    references: attraction(id)
+
+  - changeSet:
+      id: 5
+      author: developer
+      changes:
+        - createTable:
+            tableName: attraction_service
+            columns:
+              - column:
+                  name: attraction_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_attraction_service_attraction
+                    references: attraction(id)
+              - column:
+                  name: service_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_attraction_service_service
+                    references: service(id)
