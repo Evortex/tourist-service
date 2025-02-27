@@ -2,10 +2,8 @@ package com.example.tourist.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.Set;
 import java.util.UUID;
-
 
 @Entity
 @Table(name = "attraction")
@@ -32,9 +30,9 @@ public class Attraction {
 
     @ManyToMany
     @JoinTable(
-            name = "attraction_service",
+            name = "attraction_provider",
             joinColumns = @JoinColumn(name = "attraction_id"),
-            inverseJoinColumns = @JoinColumn(name = "service_id")
+            inverseJoinColumns = @JoinColumn(name = "provider_id")
     )
-    private Set<Service> services;
+    private Set<Provider> providers;
 }

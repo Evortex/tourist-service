@@ -1,6 +1,6 @@
 package com.example.tourist.model;
 
-public enum ServiceType {
+public enum ProviderType {
     GUIDE,
     AUTO_TOUR,
     FOOD,
