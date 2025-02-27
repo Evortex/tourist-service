@@ -4,7 +4,7 @@ import com.example.tourist.dto.AddressDto;
 import com.example.tourist.mapper.AddressMapper;
 import com.example.tourist.model.Address;
 import com.example.tourist.service.AddressService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +13,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/addresses")
-@RequiredArgsConstructor
 public class AddressController {
     private final AddressService addressService;
+
+    @Autowired
+    public AddressController(AddressService addressService) {
+        this.addressService = addressService;
+    }
 
     @GetMapping
     public List<AddressDto> getAllAddresses() {

@@ -13,5 +13,61 @@ public class AttractionDto {
     private AttractionType type;
     private UUID addressId;
     private UUID ticketInfoId;
-    private Set<UUID> providerIds; // Список связанных поставщиков услуг
+    private Set<UUID> providerIds;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public AttractionType getType() {
+        return type;
+    }
+
+    public void setType(AttractionType type) {
+        this.type = type;
+    }
+
+    public UUID getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(UUID addressId) {
+        this.addressId = addressId;
+    }
+
+    public UUID getTicketInfoId() {
+        return ticketInfoId;
+    }
+
+    public void setTicketInfoId(UUID ticketInfoId) {
+        this.ticketInfoId = ticketInfoId;
+    }
+
+    public Set<UUID> getProviderIds() {
+        return providerIds;
+    }
+
+    public void setProviderIds(Set<UUID> providerIds) {
+        this.providerIds = providerIds;
+    }
 }

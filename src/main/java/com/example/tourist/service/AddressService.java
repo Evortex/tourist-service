@@ -18,7 +18,8 @@ public class AddressService {
     }
 
     public Address getAddressById(UUID id) {
-        return addressRepository.findById(id).orElseThrow(() -> new RuntimeException("Address not found"));
+        return addressRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Address not found"));
     }
 
     public Address saveAddress(Address address) {
@@ -30,10 +31,10 @@ public class AddressService {
     }
 
     public List<Address> searchByCity(String city) {
-        return addressRepository.findByCityContainingIgnoreCase(city);
+        return addressRepository.findByCity(city);
     }
 
     public List<Address> searchByRegion(String region) {
-        return addressRepository.findByRegionContainingIgnoreCase(region);
+        return addressRepository.findByRegion(region);
     }
 }
