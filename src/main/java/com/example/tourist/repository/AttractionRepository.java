@@ -11,4 +11,3 @@ import java.util.UUID;
 public interface AttractionRepository extends JpaRepository<Attraction, UUID> {
     List<Attraction> findByAddress_CityContainingIgnoreCase(String city);
 }
-

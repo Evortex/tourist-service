@@ -2,16 +2,19 @@ package com.example.tourist.service;
 
 import com.example.tourist.model.Address;
 import com.example.tourist.repository.AddressRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class AddressService {
+
     private final AddressRepository addressRepository;
+
+    public AddressService(AddressRepository addressRepository) {
+        this.addressRepository = addressRepository;
+    }
 
     public List<Address> getAllAddresses() {
         return addressRepository.findAll();
