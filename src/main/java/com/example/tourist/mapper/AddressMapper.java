@@ -4,8 +4,19 @@ import com.example.tourist.dto.AddressDto;
 import com.example.tourist.model.Address;
 import org.springframework.stereotype.Component;
 
+/**
+ * Класс для преобразования между объектами {@link Address} и {@link AddressDto}.
+ * Используется для преобразования данных между слоями модели и DTO.
+ */
 @Component
 public class AddressMapper {
+
+    /**
+     * Преобразует объект {@link Address} в объект {@link AddressDto}.
+     *
+     * @param address объект модели, который необходимо преобразовать.
+     * @return объект типа {@link AddressDto}, содержащий данные из объекта {@link Address}.
+     */
     public static AddressDto toDto(Address address) {
         AddressDto dto = new AddressDto();
         dto.setId(address.getId());
@@ -18,6 +29,12 @@ public class AddressMapper {
         return dto;
     }
 
+    /**
+     * Преобразует объект {@link AddressDto} в объект {@link Address}.
+     *
+     * @param dto объект типа {@link AddressDto}, который необходимо преобразовать.
+     * @return объект модели {@link Address}, содержащий данные из объекта {@link AddressDto}.
+     */
     public static Address toEntity(AddressDto dto) {
         Address address = new Address();
         address.setId(dto.getId());
@@ -30,4 +47,3 @@ public class AddressMapper {
         return address;
     }
 }
-

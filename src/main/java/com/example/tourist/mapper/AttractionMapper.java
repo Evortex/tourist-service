@@ -6,8 +6,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
+/**
+ * Класс для преобразования между объектами {@link Attraction} и {@link AttractionDto}.
+ * Используется для преобразования данных между слоями модели и DTO.
+ */
 @Component
 public class AttractionMapper {
+
+    /**
+     * Преобразует объект {@link Attraction} в объект {@link AttractionDto}.
+     *
+     * @param attraction объект модели, который необходимо преобразовать.
+     * @return объект типа {@link AttractionDto}, содержащий данные из объекта {@link Attraction}.
+     */
     public static AttractionDto toDto(Attraction attraction) {
         AttractionDto dto = new AttractionDto();
         dto.setId(attraction.getId());
@@ -20,6 +31,12 @@ public class AttractionMapper {
         return dto;
     }
 
+    /**
+     * Преобразует объект {@link AttractionDto} в объект {@link Attraction}.
+     *
+     * @param dto объект типа {@link AttractionDto}, который необходимо преобразовать.
+     * @return объект модели {@link Attraction}, содержащий данные из объекта {@link AttractionDto}.
+     */
     public static Attraction toEntity(AttractionDto dto) {
         Attraction attraction = new Attraction();
         attraction.setId(dto.getId());
@@ -29,4 +46,3 @@ public class AttractionMapper {
         return attraction;
     }
 }
-

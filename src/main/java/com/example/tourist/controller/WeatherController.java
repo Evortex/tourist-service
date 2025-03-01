@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Контроллер для получения данных о погоде.
+ * Предоставляет API для получения данных о погоде по координатам.
+ */
 @RestController
 @RequestMapping("api/weather")
 @RequiredArgsConstructor
@@ -15,6 +19,13 @@ public class WeatherController {
 
     private final WeatherService weatherService;
 
+    /**
+     * Получает данные о погоде для указанных координат.
+     *
+     * @param q1 Широта места.
+     * @param q2 Долгота места.
+     * @return Объект {@link WeatherDataDto}, содержащий данные о погоде для указанных координат.
+     */
     @GetMapping(produces = "application/json")
     public WeatherDataDto getWeatherDataDto(@RequestParam String q1, @RequestParam String q2) {
         StringBuilder coordinates = new StringBuilder();
