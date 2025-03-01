@@ -11,27 +11,18 @@ databaseChangeLog:
                   type: UUID
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
                   name: building
                   type: INTEGER
-                  constraints:
-                    nullable: false
               - column:
                   name: street
                   type: VARCHAR(255)
-                  constraints:
-                    nullable: false
               - column:
                   name: city
                   type: VARCHAR(255)
-                  constraints:
-                    nullable: false
               - column:
                   name: region
                   type: VARCHAR(255)
-                  constraints:
-                    nullable: false
               - column:
                   name: longitude
                   type: DOUBLE
@@ -51,20 +42,16 @@ databaseChangeLog:
                   type: UUID
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
                   name: name
                   type: VARCHAR(255)
-                  constraints:
-                    nullable: false
               - column:
                   name: description
                   type: TEXT
               - column:
                   name: attraction_type
                   type: VARCHAR(50)
-                  constraints:
-                    nullable: false
+
               - column:
                   name: address_id
                   type: UUID
@@ -85,12 +72,10 @@ databaseChangeLog:
                   type: UUID
                   constraints:
                     primaryKey: true
-                    nullable: false
+
               - column:
                   name: name
                   type: VARCHAR(255)
-                  constraints:
-                    nullable: false
               - column:
                   name: description
                   type: TEXT
@@ -112,12 +97,9 @@ databaseChangeLog:
                   type: UUID
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
                   name: price
                   type: DECIMAL(10,2)
-                  constraints:
-                    nullable: false
               - column:
                   name: currency
                   type: VARCHAR(10)
@@ -126,8 +108,6 @@ databaseChangeLog:
               - column:
                   name: availability
                   type: BOOLEAN
-                  constraints:
-                    nullable: false
               - column:
                   name: attraction_id
                   type: UUID
@@ -147,13 +127,11 @@ databaseChangeLog:
                   name: attraction_id
                   type: UUID
                   constraints:
-                    nullable: false
                     foreignKeyName: fk_attraction_service_attraction
                     references: attraction(id)
               - column:
                   name: service_id
                   type: UUID
                   constraints:
-                    nullable: false
                     foreignKeyName: fk_attraction_service_service
                     references: service(id)

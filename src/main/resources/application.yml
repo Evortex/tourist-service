@@ -1,4 +1,9 @@
+server:
+  port: 9090
+
 spring:
+  application:
+    name: tourist-service
   datasource:
     url: jdbc:postgresql://localhost:5435/tourism_db
     username: postgres
@@ -13,3 +18,7 @@ spring:
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
+
+url: http://api.weatherapi.com/v1/current.json
+apiKey: c8d70ac73e2f4639b04132653231203
+aqi: no

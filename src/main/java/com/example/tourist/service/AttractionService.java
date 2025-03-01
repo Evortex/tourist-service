@@ -1,40 +1,20 @@
 package com.example.tourist.service;
 
 import com.example.tourist.model.Attraction;
-import com.example.tourist.repository.AddressRepository;
-import com.example.tourist.repository.AttractionRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
-@Service
-public class AttractionService {
-    private final AttractionRepository attractionRepository;
 
-    public AttractionService(AttractionRepository attractionRepository) {
-        this.attractionRepository = attractionRepository;
-    }
+public interface AttractionService {
 
-    public List<Attraction> getAllAttractions() {
-        return attractionRepository.findAll();
-    }
+    List<Attraction> getAllAttractions();
 
-    public Attraction getAttractionById(UUID id) {
-        return attractionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Attraction not found"));
-    }
+    Attraction getAttractionById(UUID id);
 
-    public Attraction saveAttraction(Attraction attraction) {
-        return attractionRepository.save(attraction);
-    }
+    Attraction saveAttraction(Attraction attraction);
 
-    public void deleteAttraction(UUID id) {
-        attractionRepository.deleteById(id);
-    }
+    void deleteAttraction(UUID id);
 
-    public List<Attraction> searchByCity(String city) {
-        return attractionRepository.findByAddress_CityContainingIgnoreCase(city);
-    }
+    List<Attraction> searchByCity(String city);
 }

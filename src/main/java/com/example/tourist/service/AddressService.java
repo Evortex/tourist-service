@@ -1,43 +1,21 @@
 package com.example.tourist.service;
 
 import com.example.tourist.model.Address;
-import com.example.tourist.repository.AddressRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
-@Service
-public class AddressService {
+public interface AddressService {
 
-    private final AddressRepository addressRepository;
+     List<Address> getAllAddresses();
 
-    public AddressService(AddressRepository addressRepository) {
-        this.addressRepository = addressRepository;
-    }
+     Address getAddressById(UUID id);
 
-    public List<Address> getAllAddresses() {
-        return addressRepository.findAll();
-    }
+     Address saveAddress(Address address);
 
-    public Address getAddressById(UUID id) {
-        return addressRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Address not found"));
-    }
+     void deleteAddress(UUID id);
 
-    public Address saveAddress(Address address) {
-        return addressRepository.save(address);
-    }
+     List<Address> searchByCity(String city);
 
-    public void deleteAddress(UUID id) {
-        addressRepository.deleteById(id);
-    }
-
-    public List<Address> searchByCity(String city) {
-        return addressRepository.findByCity(city);
-    }
-
-    public List<Address> searchByRegion(String region) {
-        return addressRepository.findByRegion(region);
-    }
+     List<Address> searchByRegion(String region);
 }

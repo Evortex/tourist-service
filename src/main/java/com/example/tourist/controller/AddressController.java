@@ -4,22 +4,22 @@ import com.example.tourist.dto.AddressDto;
 import com.example.tourist.mapper.AddressMapper;
 import com.example.tourist.model.Address;
 import com.example.tourist.service.AddressService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * Класс для работы с адресами
+ */
 @RestController
 @RequestMapping("/api/addresses")
+@RequiredArgsConstructor
 public class AddressController {
     private final AddressService addressService;
-
-    @Autowired
-    public AddressController(AddressService addressService) {
-        this.addressService = addressService;
-    }
 
     @GetMapping
     public List<AddressDto> getAllAddresses() {
@@ -29,8 +29,8 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public AddressDto getAddressById(@PathVariable UUID id) {
-        return AddressMapper.toDto(addressService.getAddressById(id));
+    public ResponseEntity<AddressDto> getAddressById(@PathVariable UUID id) {
+        return ResponseEntity.ok(AddressMapper.toDto(addressService.getAddressById(id)));
     }
 
     @PostMapping
