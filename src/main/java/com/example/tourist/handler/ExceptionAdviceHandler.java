@@ -3,9 +3,11 @@ package com.example.tourist.handler;
 import com.example.tourist.dto.ErrorMessageDto;
 import com.example.tourist.exception.AddressNotFoundException;
 import com.example.tourist.exception.AttractionNotFoundException;
+import com.example.tourist.exception.DuplicateEntryException;
 import com.example.tourist.exception.ProviderNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -64,5 +66,37 @@ public class ExceptionAdviceHandler {
         String message = e.getMessage();
         log.error(message);
         return new ResponseEntity<>(new ErrorMessageDto(message), HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Обрабатывает все неожиданные исключения.
+     *
+     * @param e Исключение, которое произошло.
+     * @return Ответ с сообщением об ошибке.
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorMessageDto> handleGlobalException(Exception e) {
+        log.error("Необработанная ошибка: ", e);
+        return new ResponseEntity<>(new ErrorMessageDto("Внутренняя ошибка сервера"), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    /**
+     * Обрабатывает ошибки нарушения целостности данных (например, если удаляется адрес, на который есть ссылки).
+     *
+     * @param e Исключение нарушения целостности данных.
+     * @return Ответ с сообщением об ошибке.
+     */
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorMessageDto> handleDataIntegrityViolation(DataIntegrityViolationException e) {
+        log.error("Ошибка базы данных: ", e);
+        return new ResponseEntity<>(new ErrorMessageDto("Ошибка базы данных: операция невозможна"), HttpStatus.BAD_REQUEST);
+    }
+    /**
+     * Обрабатывает исключение, когда создается дубликат записи.
+     */
+    @ExceptionHandler(DuplicateEntryException.class)
+    public ResponseEntity<ErrorMessageDto> handleDuplicateEntry(DuplicateEntryException e) {
+        log.error("Ошибка: {}", e.getMessage());
+        return new ResponseEntity<>(new ErrorMessageDto(e.getMessage()), HttpStatus.CONFLICT);
     }
 }

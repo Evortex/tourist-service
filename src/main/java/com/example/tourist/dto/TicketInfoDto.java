@@ -1,5 +1,6 @@
 package com.example.tourist.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -9,6 +10,7 @@ import java.util.UUID;
  * Используется для передачи данных о стоимости и доступности билетов для аттракционов.
  */
 @Data
+@AllArgsConstructor
 public class TicketInfoDto {
 
     /**
@@ -35,6 +37,12 @@ public class TicketInfoDto {
      * Идентификатор аттракциона, для которого доступен билет.
      */
     private UUID attractionId;
+
+    /**
+     * Пустой конструктор для создания объекта TicketInfoDto.
+     */
+    public TicketInfoDto() {
+    }
 
     /**
      * Получает уникальный идентификатор билета.

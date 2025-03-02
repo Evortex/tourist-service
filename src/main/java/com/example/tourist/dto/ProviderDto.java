@@ -1,6 +1,7 @@
 package com.example.tourist.dto;
 
 import com.example.tourist.model.ProviderType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
  * Используется для передачи данных о поставщике услуг между слоями приложения.
  */
 @Data
+@AllArgsConstructor
 public class ProviderDto {
 
     /**
@@ -31,6 +33,12 @@ public class ProviderDto {
      * Ссылка на {@link ProviderType}, который представляет тип поставщика.
      */
     private ProviderType type;
+
+    /**
+     * Пустой конструктор для создания объекта ProviderDto.
+     */
+    public ProviderDto() {
+    }
 
     /**
      * Получает уникальный идентификатор поставщика.

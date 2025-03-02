@@ -1,6 +1,7 @@
 package com.example.tourist.dto;
 
 import com.example.tourist.model.AttractionType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.util.UUID;
 import java.util.Set;
@@ -10,6 +11,7 @@ import java.util.Set;
  * Используется для передачи данных о достопримечательности между слоями приложения.
  */
 @Data
+@AllArgsConstructor
 public class AttractionDto {
 
     /**
@@ -50,6 +52,12 @@ public class AttractionDto {
      * Ссылка на множество уникальных идентификаторов поставщиков.
      */
     private Set<UUID> providerIds;
+
+    /**
+     * Пустой конструктор для создания объекта AttractionDto.
+     */
+    public AttractionDto() {
+    }
 
     /**
      * Получает уникальный идентификатор достопримечательности.
@@ -176,4 +184,5 @@ public class AttractionDto {
     public void setProviderIds(Set<UUID> providerIds) {
         this.providerIds = providerIds;
     }
+
 }

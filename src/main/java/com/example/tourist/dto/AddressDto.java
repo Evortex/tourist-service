@@ -1,5 +1,6 @@
 package com.example.tourist.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.util.UUID;
 
@@ -8,6 +9,7 @@ import java.util.UUID;
  * Используется для передачи данных об адресе между слоями приложения.
  */
 @Data
+@AllArgsConstructor
 public class AddressDto {
 
     /**
@@ -44,6 +46,12 @@ public class AddressDto {
      * Широта адреса.
      */
     private Double latitude;
+
+    /**
+     * Пустой конструктор для создания объекта AddressDto.
+     */
+    public AddressDto() {
+    }
 
     /**
      * Получает уникальный идентификатор адреса.

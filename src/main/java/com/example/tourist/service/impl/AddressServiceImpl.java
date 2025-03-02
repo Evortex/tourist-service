@@ -67,9 +67,13 @@ public class AddressServiceImpl implements AddressService {
      * Удалить адрес по его уникальному идентификатору.
      *
      * @param id уникальный идентификатор адреса
+     * @throws AddressNotFoundException если адрес с таким ID не найден
      */
     @Override
     public void deleteAddress(UUID id) {
+        if (!addressRepository.existsById(id)) {
+            throw new AddressNotFoundException(ADDRESS_NOT_FOUND_MESSAGE);
+        }
         addressRepository.deleteById(id);
     }
 
