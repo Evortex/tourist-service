@@ -11,12 +11,9 @@ import java.util.UUID;
  * Репозиторий для работы с сущностью {@link Address}.
  * Этот интерфейс расширяет {@link JpaRepository} и предоставляет методы для взаимодействия с базой данных
  * для операций с объектами {@link Address}.
- * <p>
  * Основные методы:
- * <ul>
- *     <li>{@link #findByCity(String)} - ищет адреса по названию города.</li>
- *     <li>{@link #findByRegion(String)} - ищет адреса по названию региона.</li>
- * </ul>
+ * {@link #findByCity(String)} - ищет адреса по названию города.
+ * {@link #findByRegion(String)} - ищет адреса по названию региона.
  */
 @Repository
 public interface AddressRepository extends JpaRepository<Address, UUID> {

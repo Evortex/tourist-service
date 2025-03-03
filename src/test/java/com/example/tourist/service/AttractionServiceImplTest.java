@@ -1,9 +1,8 @@
-package com.example.tourist;
+package com.example.tourist.service;
 
 import com.example.tourist.model.Attraction;
 import com.example.tourist.model.Address;
 import com.example.tourist.repository.AttractionRepository;
-import com.example.tourist.service.AttractionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +22,7 @@ import static org.mockito.Mockito.*;
  * Этот класс тестирует методы сервиса {@link AttractionService}, включая сохранение, получение и удаление аттракционов.
  */
 @ExtendWith(MockitoExtension.class)
-class AttractionServiceTest {
+class AttractionServiceImplTest {
 
     @Mock
     private AttractionRepository attractionRepository;
@@ -77,7 +76,7 @@ class AttractionServiceTest {
 
         assertNotNull(result);
         assertEquals(id, result.getId());
-        assertEquals("Париж", result.getAddress().getCity()); // Проверяем город через Address
+        assertEquals("Париж", result.getAddress().getCity());
     }
 
     /**

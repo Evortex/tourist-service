@@ -5,5 +5,8 @@ public enum AttractionType {
     PARK,
     MUSEUM,
     ARCHAEOLOGICAL,
-    MONUMENT, RESERVE
+    MONUMENT,
+    HISTORICAL,
+    CULTURAL,
+    RESERVE
 }

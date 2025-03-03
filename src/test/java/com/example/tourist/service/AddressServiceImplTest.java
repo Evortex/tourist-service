@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * Интеграционные тесты для сервиса работы с адресами.
  */
-public class AddressServiceTest extends AbstractTestContainer {
+public class AddressServiceImplTest extends AbstractTestContainer {
 
     @Autowired
     private AddressServiceImpl addressService;
