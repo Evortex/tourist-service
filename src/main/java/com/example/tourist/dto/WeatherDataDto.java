@@ -2,6 +2,7 @@ package com.example.tourist.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -13,17 +14,14 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @AllArgsConstructor
+@Schema(description = "DTO для представления данных о погоде.")
 public class WeatherDataDto {
 
-    /**
-     * Местоположение (город, регион, страна, координаты).
-     */
+    @Schema(description = "Информация о местоположении")
     @JsonProperty("location")
     private Location location;
 
-    /**
-     * Текущие погодные условия (температура, влажность, скорость ветра и т.д.).
-     */
+    @Schema(description = "Информация о текущих погодных условиях")
     @JsonProperty("current")
     private Current current;
 
@@ -32,47 +30,33 @@ public class WeatherDataDto {
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     @Data
+    @Schema(description = "Информация о местоположении для погодных данных.")
     public static class Location {
-        /**
-         * Название местоположения (например, город).
-         */
+
+        @Schema(description = "Название города", example = "Москва")
         private String name;
 
-        /**
-         * Регион, в котором находится местоположение.
-         */
+        @Schema(description = "Регион", example = "Московская область")
         private String region;
 
-        /**
-         * Страна, в которой находится местоположение.
-         */
+        @Schema(description = "Страна", example = "Россия")
         private String country;
 
-        /**
-         * Широта местоположения.
-         */
+        @Schema(description = "Широта", example = "55.7558")
         private Double lat;
 
-        /**
-         * Долгота местоположения.
-         */
+        @Schema(description = "Долгота", example = "37.6173")
         private Double lon;
 
-        /**
-         * Идентификатор часового пояса.
-         */
+        @Schema(description = "Идентификатор часового пояса", example = "Europe/Moscow")
         @JsonProperty("tz_id")
         private String tzId;
 
-        /**
-         * Время в формате Unix (секунды с 1970 года).
-         */
+        @Schema(description = "Временная метка локального времени (epoch)", example = "1617187200")
         @JsonProperty("localtime_epoch")
         private Integer localtimeEpoch;
 
-        /**
-         * Локальное время в формате строки.
-         */
+        @Schema(description = "Локальное время", example = "2025-03-05 14:00")
         private String localtime;
     }
 
@@ -81,138 +65,94 @@ public class WeatherDataDto {
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     @Data
+    @Schema(description = "Информация о текущих погодных условиях.")
     public static class Current {
-        /**
-         * Время последнего обновления погодных данных в формате Unix.
-         */
+
+        @Schema(description = "Последнее обновление (epoch)", example = "1617187200")
         @JsonProperty("last_updated_epoch")
         private Integer lastUpdatedEpoch;
 
-        /**
-         * Время последнего обновления погодных данных.
-         */
+        @Schema(description = "Последнее обновление", example = "2025-03-05 14:00")
         @JsonProperty("last_updated")
         private String lastUpdated;
 
-        /**
-         * Температура в градусах Цельсия.
-         */
+        @Schema(description = "Температура в градусах Цельсия", example = "15.5")
         @JsonProperty("temp_c")
         private Double tempC;
 
-        /**
-         * Температура в градусах Фаренгейта.
-         */
+        @Schema(description = "Температура в градусах Фаренгейта", example = "59.9")
         @JsonProperty("temp_f")
         private Double tempF;
 
-        /**
-         * Показатель дня (1 — день, 0 — ночь).
-         */
+        @Schema(description = "Является ли сейчас день (1 - да, 0 - нет)", example = "1")
         @JsonProperty("is_day")
         private Integer isDay;
 
-        /**
-         * Условия погоды (например, ясно, дождливо).
-         */
+        @Schema(description = "Описание погодных условий")
         private Condition condition;
 
-        /**
-         * Скорость ветра в милях в час.
-         */
+        @Schema(description = "Скорость ветра в миль/ч", example = "12.5")
         @JsonProperty("wind_mph")
         private Double windMph;
 
-        /**
-         * Скорость ветра в километрах в час.
-         */
+        @Schema(description = "Скорость ветра в км/ч", example = "20.1")
         @JsonProperty("wind_kph")
         private Double windKph;
 
-        /**
-         * Направление ветра в градусах.
-         */
+        @Schema(description = "Направление ветра в градусах", example = "240")
         @JsonProperty("wind_degree")
         private Integer windDegree;
 
-        /**
-         * Направление ветра (например, север, юг).
-         */
+        @Schema(description = "Направление ветра (строковое значение)", example = "WSW")
         @JsonProperty("wind_dir")
         private String windDir;
 
-        /**
-         * Давление в миллибарах.
-         */
+        @Schema(description = "Давление в миллибарах", example = "1012.3")
         @JsonProperty("pressure_mb")
         private Double pressureMb;
 
-        /**
-         * Давление в дюймах ртутного столба.
-         */
+        @Schema(description = "Давление в дюймах рт. ст.", example = "29.88")
         @JsonProperty("pressure_in")
         private Double pressureIn;
 
-        /**
-         * Количество осадков в миллиметрах.
-         */
+        @Schema(description = "Осадки в мм", example = "0.2")
         @JsonProperty("precip_mm")
         private Double precipMm;
 
-        /**
-         * Количество осадков в дюймах.
-         */
+        @Schema(description = "Осадки в дюймах", example = "0.01")
         @JsonProperty("precip_in")
         private Double precipIn;
 
-        /**
-         * Влажность в процентах.
-         */
+        @Schema(description = "Влажность в %", example = "80")
         private Integer humidity;
 
-        /**
-         * Облачность в процентах.
-         */
+        @Schema(description = "Облачность в %", example = "75")
         private Integer cloud;
 
-        /**
-         * Температура, как ощущается человеком, в градусах Цельсия.
-         */
+        @Schema(description = "Ощущаемая температура в градусах Цельсия", example = "14.0")
         @JsonProperty("feelslike_c")
         private Double feelslikeC;
 
-        /**
-         * Температура, как ощущается человеком, в градусах Фаренгейта.
-         */
+        @Schema(description = "Ощущаемая температура в градусах Фаренгейта", example = "57.2")
         @JsonProperty("feelslike_f")
         private Double feelslikeF;
 
-        /**
-         * Видимость в километрах.
-         */
+        @Schema(description = "Видимость в км", example = "10.0")
         @JsonProperty("vis_km")
         private Double visKm;
 
-        /**
-         * Видимость в милях.
-         */
+        @Schema(description = "Видимость в милях", example = "6.2")
         @JsonProperty("vis_miles")
         private Double visMiles;
 
-        /**
-         * Ультрафиолетовый индекс.
-         */
+        @Schema(description = "Индекс ультрафиолетового излучения", example = "5.0")
         private Double uv;
 
-        /**
-         * Скорость порывов ветра в милях в час.
-         */
+        @Schema(description = "Порывы ветра в миль/ч", example = "25.0")
         @JsonProperty("gust_mph")
         private Double gustMph;
 
-        /**
-         * Скорость порывов ветра в километрах в час.
-         */
+        @Schema(description = "Порывы ветра в км/ч", example = "40.2")
         @JsonProperty("gust_kph")
         private Double gustKph;
     }
@@ -222,20 +162,16 @@ public class WeatherDataDto {
      */
     @JsonIgnoreProperties(ignoreUnknown = true)
     @Data
+    @Schema(description = "Описание погодных условий.")
     public static class Condition {
-        /**
-         * Описание погодных условий (например, "ясно", "дождливо").
-         */
+
+        @Schema(description = "Текстовое описание погоды", example = "Ясно")
         private String text;
 
-        /**
-         * Иконка, соответствующая погодным условиям.
-         */
+        @Schema(description = "URL иконки погодных условий", example = "//cdn.weatherapi.com/weather/64x64/day/113.png")
         private String icon;
 
-        /**
-         * Код погодных условий.
-         */
+        @Schema(description = "Код состояния погоды", example = "1000")
         private Integer code;
     }
 }

@@ -91,4 +91,3 @@ public class Address {
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     private List<Attraction> attractions = new ArrayList<>();
 }
-

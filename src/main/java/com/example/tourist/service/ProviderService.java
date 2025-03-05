@@ -12,33 +12,11 @@ import java.util.UUID;
  */
 public interface ProviderService {
 
-     /**
-      * Получить список всех поставщиков услуг.
-      *
-      * @return список всех {@link Provider}
-      */
      List<Provider> getAllProviders();
 
-     /**
-      * Получить информацию о поставщике по его уникальному идентификатору.
-      *
-      * @param id уникальный идентификатор поставщика
-      * @return объект {@link Provider}, содержащий данные о поставщике
-      */
      Provider getProviderById(UUID id);
 
-     /**
-      * Сохранить новый или обновить существующий поставщик.
-      *
-      * @param provider объект {@link Provider}, содержащий информацию о поставщике
-      * @return объект {@link Provider}, сохраненный в базе данных
-      */
      Provider saveProvider(Provider provider);
 
-     /**
-      * Удалить поставщика по его уникальному идентификатору.
-      *
-      * @param id уникальный идентификатор поставщика
-      */
      void deleteProvider(UUID id);
 }

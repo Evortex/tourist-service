@@ -1,7 +1,10 @@
 package com.example.tourist.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -10,127 +13,23 @@ import java.util.UUID;
  * Используется для передачи данных о стоимости и доступности билетов для аттракционов.
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "DTO для представления информации о билетах на аттракционы.")
 public class TicketInfoDto {
 
-    /**
-     * Уникальный идентификатор записи о билете.
-     */
+    @Schema(description = "Уникальный идентификатор билета", example = "550e8400-e29b-41d4-a716-446655440000")
     private UUID id;
 
-    /**
-     * Цена билета.
-     */
+    @Schema(description = "Стоимость билета", example = "19.99")
     private BigDecimal price;
 
-    /**
-     * Валюта, в которой указана цена билета.
-     */
+    @Schema(description = "Валюта стоимости билета", example = "USD")
     private String currency;
 
-    /**
-     * Доступность билета (доступен ли билет для покупки).
-     */
+    @Schema(description = "Доступность билета (true - доступен, false - недоступен)", example = "true")
     private Boolean availability;
 
-    /**
-     * Идентификатор аттракциона, для которого доступен билет.
-     */
+    @Schema(description = "Идентификатор аттракциона, к которому относится билет", example = "123e4567-e89b-12d3-a456-426614174000")
     private UUID attractionId;
-
-    /**
-     * Пустой конструктор для создания объекта TicketInfoDto.
-     */
-    public TicketInfoDto() {
-    }
-
-    /**
-     * Получает уникальный идентификатор билета.
-     *
-     * @return UUID уникальный идентификатор билета.
-     */
-    public UUID getId() {
-        return id;
-    }
-
-    /**
-     * Устанавливает уникальный идентификатор билета.
-     *
-     * @param id UUID уникальный идентификатор билета.
-     */
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    /**
-     * Получает цену билета.
-     *
-     * @return Цена билета.
-     */
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    /**
-     * Устанавливает цену билета.
-     *
-     * @param price Цена билета.
-     */
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    /**
-     * Получает валюту, в которой указана цена билета.
-     *
-     * @return Валюта цены билета.
-     */
-    public String getCurrency() {
-        return currency;
-    }
-
-    /**
-     * Устанавливает валюту, в которой указана цена билета.
-     *
-     * @param currency Валюта для цены билета.
-     */
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    /**
-     * Получает доступность билета.
-     *
-     * @return Доступность билета (true, если доступен).
-     */
-    public Boolean getAvailability() {
-        return availability;
-    }
-
-    /**
-     * Устанавливает доступность билета.
-     *
-     * @param availability Доступность билета (true, если доступен).
-     */
-    public void setAvailability(Boolean availability) {
-        this.availability = availability;
-    }
-
-    /**
-     * Получает идентификатор аттракциона, для которого доступен билет.
-     *
-     * @return Идентификатор аттракциона.
-     */
-    public UUID getAttractionId() {
-        return attractionId;
-    }
-
-    /**
-     * Устанавливает идентификатор аттракциона, для которого доступен билет.
-     *
-     * @param attractionId Идентификатор аттракциона.
-     */
-    public void setAttractionId(UUID attractionId) {
-        this.attractionId = attractionId;
-    }
 }

@@ -24,12 +24,6 @@ public class WeatherServiceImpl implements WeatherService {
     @Value("${aqi}")
     private String aqi;
 
-    /**
-     * Получить данные о погоде по координатам.
-     *
-     * @param coordinates строка с координатами, например "37.7749,-122.4194" для Сан-Франциско
-     * @return объект {@link WeatherDataDto}, содержащий информацию о текущей погоде
-     */
     @Override
     public WeatherDataDto getWeather(String coordinates) {
         return weatherDataFeign.getWeather(

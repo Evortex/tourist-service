@@ -1,8 +1,11 @@
 package com.example.tourist.dto;
 
 import com.example.tourist.model.ProviderType;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.UUID;
 
 /**
@@ -10,105 +13,20 @@ import java.util.UUID;
  * Используется для передачи данных о поставщике услуг между слоями приложения.
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "DTO для передачи информации о поставщике услуг")
 public class ProviderDto {
 
-    /**
-     * Уникальный идентификатор поставщика услуг.
-     */
+    @Schema(description = "Уникальный идентификатор поставщика услуг", example = "550e8400-e29b-41d4-a716-446655440000")
     private UUID id;
 
-    /**
-     * Название поставщика услуг.
-     */
+    @Schema(description = "Название поставщика услуг", example = "Best Tours")
     private String name;
 
-    /**
-     * Описание поставщика услуг.
-     */
+    @Schema(description = "Описание поставщика услуг", example = "Туристическое агентство, предоставляющее экскурсионные туры")
     private String description;
 
-    /**
-     * Тип поставщика услуг.
-     * Ссылка на {@link ProviderType}, который представляет тип поставщика.
-     */
+    @Schema(description = "Тип поставщика услуг", example = "TRAVEL_AGENCY")
     private ProviderType type;
-
-    /**
-     * Пустой конструктор для создания объекта ProviderDto.
-     */
-    public ProviderDto() {
-    }
-
-    /**
-     * Получает уникальный идентификатор поставщика.
-     *
-     * @return UUID уникальный идентификатор поставщика.
-     */
-    public UUID getId() {
-        return id;
-    }
-
-    /**
-     * Устанавливает уникальный идентификатор поставщика.
-     *
-     * @param id UUID уникальный идентификатор поставщика.
-     */
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    /**
-     * Получает название поставщика услуг.
-     *
-     * @return Название поставщика услуг.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Устанавливает название поставщика услуг.
-     *
-     * @param name Название поставщика услуг.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Получает описание поставщика услуг.
-     *
-     * @return Описание поставщика услуг.
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Устанавливает описание поставщика услуг.
-     *
-     * @param description Описание поставщика услуг.
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * Получает тип поставщика услуг.
-     *
-     * @return Тип поставщика услуг.
-     */
-    public ProviderType getType() {
-        return type;
-    }
-
-    /**
-     * Устанавливает тип поставщика услуг.
-     *
-     * @param type Тип поставщика услуг.
-     */
-    public void setType(ProviderType type) {
-        this.type = type;
-    }
 }
